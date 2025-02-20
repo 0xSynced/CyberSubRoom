@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- general meta tags -->
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- site specific tags -->
+    <title></title>
+    <meta name="description"
+        content="This is an example of meta description. This will often show up in search results.">
+    <!-- style sheets -->
+    <link rel="stylesheet" href="./css/base-css/reset.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/page-css/login.css">
+    <!-- javascript files -->
+    <!-- <script src=".js"></script> -->
+
+
+</head>
+
+<body>
+    <header class="login-header">
+        <nav>
+            <a href="homepage.html"><img src="./assests/images.jpeg" alt=""> </a>
+            <ul>
+                <a href="homepage.html">
+                    <li>Home</li>
+                </a>
+                <a href="login.html">
+                    <li>Login</li>
+                </a>
+                <a href="plans.html">
+                    <li>Plans</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-hero">
+        <section class="login-form-hero">
+            <h1>Login to Your Account</h1>
+            <p class="login-intro">Welcome back! Please login to your account to access our services.</p>
+            <form id="loginForm" class="login-form" action="/login" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="username" id="username" name="username" required placeholder="Enter your username"
+                        pattern="[a-zA-Z0-9]{2,}">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password"
+                >
+                </div>
+                <button type="submit" class="login-button">Login</button>
+            </form>
+        </section>
+    </main>
+    <hr>
+    <footer class="login-footer">
+        <section class="footer-section" >
+            <article>
+                <h4>Get in touch</h4>
+                <p>For any questions or feedback, feel free to reach out to us at:</p>
+                <p>Phone: #######</p>
+                <p>Mail</p>
+                <p>Address</p>
+            </article>
+            <div>
+                <a href="feedback.html">Feedback</a>
+              </div>  
+          <small>&copy; 2025 CyeberSubRoom. All rights reserved.</small>
+        </section>
+    </footer>
