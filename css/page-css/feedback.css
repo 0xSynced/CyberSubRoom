@@ -1,12 +1,9 @@
-
-
-/* feedback.html CSS START */
 .feedback-main {
-    background-color: white;
-    max-width: 1200px;
-    margin: 0 auto; /* CENTERS THE FEEDBACK */
-    padding: 2rem;
-    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    max-width: 1000px;
+    margin: 1rem auto;
+    padding: 2rem 2rem;
+    border-radius: 50px;
     box-shadow: var(--shadow);
 }
 
@@ -18,19 +15,29 @@
     margin: 0 auto;
     padding: 2rem;
 }
- 
+
 .feedback-container {
-    background-color: white;
-    border-radius: 12px;
-    padding: 2rem;
-    border-radius: var(--border-radius);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(255, 215, 0, 0.1);
+    animation: fadeIn 0.5s ease-out;
+    transition: all 0.3s ease;
+}
+
+
+.feedback-container:hover {
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
 }
 
 
 .feedback-intro {
     color: var(--secondary-color);
     margin-top: 2rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
 }
 
 .form-group {
@@ -45,30 +52,24 @@
     display: block;
     font-weight: 500;
     margin-bottom: 0.5rem;
-    color: #374151;
+    color: var(--text-color);
 }
 
-/* label {
-    font-weight: 500;
-    color: var(--text-color);
-} */
-/* Base style for the Feedback */
-input,select,textarea {
-   width: 100%;
+input, select, textarea {
+    width: 100%;
     padding: 0.75rem;
-    border: 1px solid #E5E7EB;
-    border-radius: 8px;
-    background-color: white;
-    transition: border-color 0.2s;
+    border: 1px solid var(--secondary-color);
+    border-radius: 30px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transition: var(--transition);
 }
 
 input:focus, select:focus, textarea:focus {
-    border-color: #3B82F6;
+    border-color: var(--secondary-color);
     outline: none;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(255, 178, 44, 0.1);
 }
-
-
 
 textarea {
     resize: vertical;
@@ -76,27 +77,22 @@ textarea {
     width: 750px;
 }
 
-
-
 button {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem ;
+    background-color: var(--secondary-color);
     border: none;
-    border-radius: var(--border-radius);
-    font-weight: 500;
+    border-radius: 30px;
     cursor: pointer;
     transition: var(--transition);
-    width: fit-content;
+    color: var(--text-color);
 }
 
 button:hover {
-    background-color: #1d4ed8;
-    transform: translateY(-1px);
+    background-color: var(--text-color);
+    color: #000000;
 }
-/* feedback.html CSS END */
 
-/* RESPONSIVE DES */
+/* Responsive Design */
 @media (max-width: 768px) {
     nav {
         flex-direction: column;
@@ -108,6 +104,7 @@ button:hover {
         flex-direction: column;
         gap: 1rem;
     }
+    
     .feedback-container {
         padding: 1rem;
     }
@@ -117,96 +114,14 @@ button:hover {
     }
 
     button {
-       width: 100%;
+        width: 100%;
     }
-    .feedback-wrapper {
+    
+    .feedback-hero {
         grid-template-columns: 1fr;
     }
     
-    .feedback-aside {
-        position: static;
+    textarea {
+        width: 100%;
     }
 }
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.feedback-container {
-    animation: fadeIn 0.5s ease-out; 
-}
-
-
-
-
-/* VALIDATION FORM STYLE START */
-/* input:invalid,select:invalid,textarea:invalid {
-    border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
-} */
-
-
-
-/* animation for feedback.html  */
-
-/* animation end for feedback.html */
-/* the real ending for the feedback.html ;) */
-
-
-/* ASIDE FEEDBACK HERO (removed) */
-/* 
-
-.feedback-aside {
-    position: sticky;
-    top: 2rem;;
-}
-
-.support-info {
-    background: white;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}   
-
-.feedback-list-benifits {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-.feedback-list-benifits li {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 1rem;
-    color: #4B5563;
-}
-
-.quick-contact { 
-    background: white;
-    padding: 1.5rem;
-    border-radius: 12px;
-    margin-top: 1.5rem;
-}
-
-.quick-contact-number {
-    display: inline-block;
-    background: #3B82F6;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    margin-top: 1rem;
-    transition: var(--transition);
-}
-
-.quick-contact-number:hover {
-    background-color: #2563eb;
-} */

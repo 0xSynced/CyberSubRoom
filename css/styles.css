@@ -1,41 +1,37 @@
 :root {
-    --primary-color: #0a3591;
-    --secondary-color: #475569;
-    --success-color: #16a34a;
-    --background-color: #f8fafc;
-    --text-color: #1e293b;
-    --border-color: #e2e8f0;
-    --shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    --border-radius: 8px;
-    --transition: all 0.3s ease;
-    --bg-dark: #1a1a1a;
-    --text-dark: #e5e5e5;
+    --primary-color: #111111;    /* Deep black background */
+    --secondary-color: #FFD700;  /* Yellow from logo */
+    --text-color: #FFFFFF;      /* Pure white */
+    --accent-color: #333333;    /* Darker gray for depth */
+    --hover-color: #FFE44D;     /* Slightly lighter yellow for hover states */
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --border-radius: 30px;
+    --transition: all 0.3s ease 0s;
 }
 
+
+
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: montserrat-500, Arial, Helvetica, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-color);
+    background-color: var(--primary-color);
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-
-p { margin-bottom: 2rem;}
 
 header {
     background-color: var(--primary-color);
-    color: #fff;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: var(--shadow);
-    top: 0;
-    z-index: 100;
-    position: sticky;
+    color: var(--text-color);
+    padding: 30px 5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-/* Nav Bar */
 nav {
     max-width: 1200px;
     margin: 0 auto;
@@ -45,8 +41,9 @@ nav {
 }
 
 nav img {
-    width: auto;
-    height: 50px;
+    cursor: pointer;
+    margin-right: auto;
+    width: 50px;
 }
 
 nav ul {
@@ -59,7 +56,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: var(--text-color);
     font-weight: 500;
     transition: var(--transition);
 }
@@ -68,17 +65,16 @@ nav a:hover {
     color: var(--secondary-color);
 }
 
-/* Nav Bar */
-
-
 h1 {
-    color: var(--text-color);
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 60px;
+    font-weight: 500;
+    color: var(--secondary-color);
     text-align: center;
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--text-color);
     text-decoration: none;
+    transition: var(--transition);
 }
+
