@@ -1,0 +1,229 @@
+/* header styling */
+
+.montserrat-500{
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    font-color: #FFB22C ;
+  }
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #222224;
+}
+
+li, a, button {
+    font-family: montserrat-500;
+    font-weight: 500;
+    font-size: 16px;
+    color: #F7F7F7;
+    text-decoration: none;
+}
+
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 5%;
+    background-color: #222224;
+}
+
+.logo {
+    cursor: pointer;
+    margin-right: auto;
+    width: 50px;
+}
+
+.nav-links {
+   list-style: none;
+}
+
+.nav-links li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.nav-links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+    color: #FFB22C;
+}
+
+button {
+    padding: 7px 20px;
+    background-color: #FFB22C;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: #F7F7F7;
+    color: #000000;
+}
+
+/* Header Styling ending here */
+
+
+/* Middle of the Page Styling */
+
+h1 {
+    font-size: 60px;
+    font-weight: 500;
+    color: #FFB22C;
+    text-align: center;
+}
+
+.our-plans {
+    font-size: 60px;
+    font-weight: 500;
+    color: #FFB22C;
+    text-align: center;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 10%;
+    background-color: #222224;
+    color: #F7F7F7;
+    text-shadow: #FFB22C 1px 1px 1px;
+   
+    font-size: large;
+
+}
+.plans {
+    display: flex;
+    gap: 20px;
+}
+
+.plan-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    padding: 20px;
+    color: white;
+    font-family: montserrat-500;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.plan-box:hover {
+    transform: scale(1.1);
+}
+
+/* Different Plan Colors */
+.free {
+    background: linear-gradient(135deg, #854836, #121e13);
+    cursor: default;
+}
+
+.standard {
+    background: linear-gradient(135deg, #FFB22C, #121e13);
+    cursor: default;
+}
+
+.premium {
+    background: linear-gradient(135deg, #007bff, #121e13);
+    cursor: default;
+}
+
+/* Middle of the Page Styling Ending here */
+
+/* Footer Styling */
+.footer {
+    background-color: #854836;
+    color: #F7F7F7;
+    text-align: center;
+    font-family: montserrat-500;
+    border-top: 5px solid #854836;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1500px;
+    margin: auto;
+    max-height: 1500px;
+    padding: 20px;
+}
+
+.footer-section {
+    margin: 20px;
+    flex: 1;
+    min-width: 250px;
+    font-family: montserrat-500;
+}
+
+.footer-section h3 {
+    color: #FFB22C;
+    margin-bottom: 15px;
+}
+
+.footer-section p, .footer-section a {
+    color: #F7F7F7;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.footer-section a:hover {
+    color: #FFB22C;
+}
+
+
+.quick-links a {
+    font-family: montserrat-500;
+    display: block;
+    margin: 5px 5px;
+}
+
+.icon {
+    width: 30px;  
+    height: auto; 
+    margin: 5px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover {
+    transform: scale(1.2); 
+}
+
+
+.social-icons a {
+    display: inline-block;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #854836;
+}
+
+
+.footer-bottom {
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 5px solid #854836;
+    font-size: 14px;
+    font-family: montserrat-500;
+}

@@ -9,23 +9,28 @@
   <title></title>
   <meta name="description" content="This is an example of meta description. This will often show up in search results.">
   <!-- style sheets -->
-  <link rel="stylesheet" href="css-reset.css">
-  <link rel="stylesheet" href=".css">
+  <!-- <link rel="stylesheet" href="/styles/css-reset.css"> -->
+  <link rel="stylesheet" href="/styles/home.css">
   <!-- javascript files -->
   <script src=".js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+    </style>
+
+
+
 </head>
 <body>
   <header>
+    <img class="logo" src="/assests/images.jpeg" alt="">
     <nav>
-       <a href="homepage.html"><img src="./assests/images.jpeg" alt="">   </a> 
-        <ul>
+        <ul class="nav-links">
             <a href="homepage.html"><li>Home</li></a>
-            <a href="login.html"><li>login</li></a>
             <a href="plans.html"><li>Plans</li></a>
         </ul>
     </nav>    
-
-  </header>
+    <a class="login_buton" href=""><button>Login</button></a>
+    </header>
   <main>
     <section>
       <article>
@@ -34,35 +39,61 @@
       </article>
     </section>
     
-    <section>
-        <div>
-            <p>Basic</p>
-            <p>100$</p>
-        </div>
-        <div>
-            <p>Premium</p>
-            <p>200$</p>
-        </div>
-        <div>
-            <p>Ultimate</p>
-            <p>500$</p>
-        </div>
-       
+    <section class="our-plans" > 
+      <div class="our-plans">Our Plans</div>
+          <div class="plans">
+          <div class="plan-box free">Free Plan</div>
+          <div class="plan-box standard">Standard Plan</div>
+          <div class="plan-box premium">Premium Plan</div>       
     </section>
   </main>
-  <footer>
-    <section>
-        <article>
-            <h2>Get in touch</h2>
-            <p>For any questions or feedback, feel free to reach out to us at:</p>
-            <p>Phone: 123-456-7890</p>
-            <p>Mail</p>
-            <p>Address</p>
-            <p>Socials</p>
-            <a href="feedback.html">feedback</a>
-  
+  <footer class="footer">
+    <div class="footer-container">
 
-    </section>
-  </footer>
+        <!-- Contact Section -->
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>📍 SalahElDin, Riyadh, Saudi Arabia</p>
+            <p>📞 +966 590437680</p>
+            <p>📧 contact@CyberSubRoom.com</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section quick-links">
+            <h3>Quick Links</h3>
+            <a href="./homepage.html">Home</a>
+            <a href="./plans.html">Plans</a>
+            <a href="/feedback.html">Feedback</a>
+            
+            
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="https://facebook.com">
+                  <img class="icon" src="assests/facebook.png" alt="Facebook" >
+              </a>
+              <a href="https://twitter.com">
+                  <img class="icon" src="assests/twitter.png" alt="Twitter" >
+              </a>
+              <a href="https://instagram.com">
+                  <img class="icon" src="assests/instagram.png" alt="Instagram" >
+              </a>
+              <a href="https://linkedin.com">
+                  <img class="icon" src="assests/linkedin.png" alt="LinkedIn" >
+              </a>
+          </div>
+          
+        </div>
+
+    </div>
+
+    
+    <div class="footer-bottom">
+        <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+    </div>
+</footer>
 </body>
 </html>
