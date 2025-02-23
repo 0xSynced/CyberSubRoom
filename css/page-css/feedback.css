@@ -51,9 +51,7 @@
     color: var(--text-color);
 }
 
-input, 
-select, 
-textarea {
+input, select, textarea {
     width: 100%;
     padding: 0.75rem 1rem;
     border: 1px solid var(--secondary-color);
@@ -64,16 +62,14 @@ textarea {
     box-sizing: border-box;
 }
 
-input:focus, 
-select:focus, 
-textarea:focus {
+input:focus, select:focus, textarea:focus {
     border-color: var(--secondary-color);
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 178, 44, 0.1);
 }
 
 textarea {
-    resize: vertical;
+    resize: none;
     min-height: 100px;
     width: 100%;
 }

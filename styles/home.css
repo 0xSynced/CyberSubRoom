@@ -80,7 +80,14 @@ h1 {
     font-weight: 500;
     color: #FFB22C;
     text-align: center;
+    margin: 50px 0;
+
 }
+
+main {
+    min-height: 100vh;
+}
+
 
 .our-plans {
     font-size: 60px;
