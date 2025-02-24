@@ -156,12 +156,14 @@ section {
 
 /* Footer Styling */
 .footer {
+    
     background-color: #854836;
     color: #F7F7F7;
     text-align: center;
     font-family: montserrat-500;
     border-top: 5px solid #854836;
 }
+
 
 .footer-container {
     display: flex;
