@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CyberSubRoom - Security Dashboard</title>
+    <link rel="stylesheet" href="styles/user-dashboard.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="assests/images.jpeg" alt="CyberSubRoom Logo">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <!-- <li><a href="my-security.html">My Security</a></li> -->
+            </ul>
+        </nav>    
+        <a href="login.html"><button>Logout</button></a>
+    </header>
+
+    <div class="container">
+        <h1>User Dashboard</h1>
+        
+        <!-- User Info -->
+        <div class="user-info">
+            <div class="user-details">
+                <div class="user-avatar">JD</div>
+                <div class="user-text">
+                    <h2>Abdulrahman Alotabi</h2>
+                    <div>Current Plan: <span class="plan-badge standard">Standard Protection</span></div>
+                </div>
+            </div>
+            <div>
+                <button>Account Settings</button>
+            </div>
+        </div>
+        
+        <!-- Security Status Summary -->
+        <div class="security-status">
+            <div class="status-item">
+                <div class="status-icon secure">✓</div>
+                <div class="status-text">
+                    <h3>Threat Protection</h3>
+                    <p>Active & Protected</p>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon secure">✓</div>
+                <div class="status-text">
+                    <h3>Vulnerability Scanner</h3>
+                    <p>Last scan: 2 days ago</p>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon warning">!</div>
+                <div class="status-text">
+                    <h3>Firewall Status</h3>
+                    <p>1 rule needs update</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Current Plan Details -->
+        <div class="plan-details">
+            <h2>Current Security Plan</h2>
+            <div class="plan-header">
+                <div class="plan-name">Standard Protection</div>
+                <div>
+                    <div class="plan-price">$9.99 <span class="plan-period">/ month</span></div>
+                    <div class="plan-period">Next billing: April 15, 2025</div>
+                </div>
+            </div>
+            
+            <div class="plan-features">
+                <ul>
+                    <li>Advanced Threat Detection</li>
+                    <li>5 Device Protection</li>
+                    <li>Weekly Vulnerability Scans</li>
+                    <li>Basic Firewall Protection</li>
+                    <li>Email Security Filtering</li>
+                </ul>
+            </div>
+            
+            <div class="plan-actions">
+                <a href="#plan-options" class="edit-btn">Change Plan</a>
+                <button class="renewal-btn">Renew Plan</button>
+            </div>
+        </div>
+        
+        <!-- Usage Section -->
+        <div class="usage-section">
+            <h2>Security Metrics</h2>
+            
+            <div class="usage-item">
+                <div class="usage-label">
+                    <div class="usage-title">Protected Devices</div>
+                    <div class="usage-value">3 / 5</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+            </div>
+            
+            <div class="usage-item">
+                <div class="usage-label">
+                    <div class="usage-title">Threats Blocked This Month</div>
+                    <div class="usage-value">237</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;"></div>
+                </div>
+            </div>
+            
+            <div class="usage-item">
+                <div class="usage-label">
+                    <div class="usage-title">Vulnerabilities Patched</div>
+                    <div class="usage-value">16 / 18</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 89%;"></div>
+                </div>
+            </div>
+            
+            <div class="usage-item">
+                <div class="usage-label">
+                    <div class="usage-title">Subscription</div>
+                    <div class="usage-value">25 days remaining</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 15%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Plan Options for Changing -->
+        <div class="plan-options" id="plan-options">
+            <h2>Available Security Plans</h2>
+            <p>Select a plan below to change your subscription</p>
+            
+            <div class="plan-options-container">
+                <div class="plan-card">
+                    <h3>Basic Protection</h3>
+                    <div class="plan-card-price">$0 <span>/ month</span></div>
+                    <ul>
+                        <li>Basic Threat Detection</li>
+                        <li>1 Device Protection</li>
+                        <li>Monthly Vulnerability Scan</li>
+                        <li>Limited Firewall</li>
+                    </ul>
+                    <button class="plan-card-btn">Downgrade</button>
+                </div>
+                
+                <div class="plan-card current">
+                    <div class="current-tag">CURRENT</div>
+                    <h3>Standard Protection</h3>
+                    <div class="plan-card-price">$9.99 <span>/ month</span></div>
+                    <ul>
+                        <li>Advanced Threat Detection</li>
+                        <li>5 Device Protection</li>
+                        <li>Weekly Vulnerability Scans</li>
+                        <li>Basic Firewall Protection</li>
+                        <li>Email Security Filtering</li>
+                    </ul>
+                    <button class="plan-card-btn" disabled>Current Plan</button>
+                </div>
+                
+                <div class="plan-card">
+                    <h3>Premium Protection</h3>
+                    <div class="plan-card-price">$19.99 <span>/ month</span></div>
+                    <ul>
+                        <li>Enterprise-Grade Protection</li>
+                        <li>10 Device Protection</li>
+                        <li>Daily Vulnerability Scans</li>
+                        <li>Advanced Firewall & IPS</li>
+                        <li>Advanced Email Security</li>
+                        <li>Zero-Day Threat Prevention</li>
+                    </ul>
+                    <button class="plan-card-btn">Upgrade</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 SalahElDin, Riyadh, Saudi Arabia</p>
+                <p>📞 +966 590437680</p>
+                <p>📧 contact@CyberSubRoom.com</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <a href="./homepage.html">Home</a>
+                <a href="./plans.html">Plans</a>
+                <a href="/feedback.html">Feedback</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com">
+                        <img class="icon" src="assests/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com">
+                        <img class="icon" src="assests/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com">
+                        <img class="icon" src="assests/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://linkedin.com">
+                        <img class="icon" src="assests/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

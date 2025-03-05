@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CyberSubRoom - Manage Users</title>
+    <link rel="stylesheet" href="/styles/admin.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    </style>
+</head>
+<body>
+    <header>
+        <img class="logo" src="/assests/images.jpeg" alt="CyberSubRoom Logo">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="admin-dashboard.html">Admin</a></li>
+            </ul>
+        </nav>    
+        <a href="login.html"><button>Logout</button></a>
+    </header>
+
+    <main class="admin-dashboard">
+        <h1>Admin Dashboard</h1>
+
+        <div class="dashboard-container">
+            <!-- Admin Navigation -->
+            <div class="admin-nav">
+                <a href="admin.html" class="admin-nav-link">Manage Plans</a>
+                <a href="admin-users.html" class="admin-nav-link active">Manage Users</a>
+                <a href="admin-reports.html" class="admin-nav-link">Reports</a>
+            </div>
+
+            <!-- Users Management Section -->
+            <div class="admin-content">
+                <h2>Manage Users</h2>
+                
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-number">256</div>
+                        <div class="stat-title">Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">183</div>
+                        <div class="stat-title">Active Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">42</div>
+                        <div class="stat-title">Premium Subscriptions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-title">New Users Today</div>
+                    </div>
+                </div>
+                
+                <div class="form-section">
+                    <h3>Add/Edit User</h3>
+                    <form id="user-form">
+                        <div class="form-group">
+                            <label for="user-name">Full Name</label>
+                            <input type="text" id="user-name" name="userName" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-email">Email Address</label>
+                            <input type="email" id="user-email" name="userEmail" required>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="user-role">User Role</label>
+                                <select id="user-role" name="userRole">
+                                    <option value="user">Regular User</option>
+                                    <option value="admin">Administrator</option>
+                                    <option value="support">Support Staff</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="user-plan">Assigned Plan</label>
+                                <select id="user-plan" name="userPlan">
+                                    <option value="free">Free Plan</option>
+                                    <option value="standard">Standard Plan</option>
+                                    <option value="premium">Premium Plan</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="user-status">Account Status</label>
+                                <select id="user-status" name="userStatus">
+                                    <option value="active">Active</option>
+                                    <option value="suspended">Suspended</option>
+                                    <option value="pending">Pending Verification</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="user-joined">Join Date</label>
+                                <input type="date" id="user-joined" name="userJoined">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="user-notes">Admin Notes</label>
+                            <textarea id="user-notes" name="userNotes" rows="3"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="submit-btn">Save User</button>
+                            <button type="reset" class="reset-btn">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="search-filter-section">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search users...">
+                        <button class="search-btn">Search</button>
+                    </div>
+                    <div class="filter-options">
+                        <select id="filter-plan">
+                            <option value="">All Plans</option>
+                            <option value="free">Free</option>
+                            <option value="standard">Standard</option>
+                            <option value="premium">Premium</option>
+                        </select>
+                        <select id="filter-role">
+                            <option value="">All Roles</option>
+                            <option value="user">Regular Users</option>
+                            <option value="admin">Administrators</option>
+                            <option value="support">Support Staff</option>
+                        </select>
+                        <select id="filter-status">
+                            <option value="">All Statuses</option>
+                            <option value="active">Active</option>
+                            <option value="suspended">Suspended</option>
+                            <option value="pending">Pending</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="existing-users">
+                    <h3>User Management</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Plan</th>
+                                <th>Status</th>
+                                <th>Join Date</th>
+                                <th>Last Login</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Abdulrahman Alotabi</td>
+                                <td>Alotabi@gmail.com</td>
+                                <td>Regular User</td>
+                                <td>Standard Plan</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Jan 15, 2025</td>
+                                <td>Mar 4, 2025</td>
+                                <td>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Khaild AlJasser</td>
+                                <td>AlJasser@gmail.com</td>
+                                <td>Support Staff</td>
+                                <td>Premium Plan</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Nov 8, 2024</td>
+                                <td>Mar 5, 2025</td>
+                                <td>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Ibrahim Jassem</td>
+                                <td>barhoom@gmail.com</td>
+                                <td>Administrator</td>
+                                <td>Premium Plan</td>
+                                <td><span class="status-badge active">Active</span></td>
+                                <td>Dec 3, 2024</td>
+                                <td>Mar 5, 2025</td>
+                                <td>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Faisal Alqahtani</td>
+                                <td>Alqahtani@gmail.com</td>
+                                <td>Regular User</td>
+                                <td>Free Plan</td>
+                                <td><span class="status-badge suspended">Suspended</span></td>
+                                <td>Feb 22, 2025</td>
+                                <td>Feb 28, 2025</td>
+                                <td>
+                                    <button class="edit-btn">Edit</button>
+                                    <button class="delete-btn">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="pagination">
+                        <button class="page-btn">Previous</button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 SalahElDin, Riyadh, Saudi Arabia</p>
+                <p>📞 +966 590437680</p>
+                <p>📧 contact@CyberSubRoom.com</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <a href="./homepage.html">Home</a>
+                <a href="./plans.html">Plans</a>
+                <a href="/feedback.html">Feedback</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com">
+                        <img class="icon" src="assests/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com">
+                        <img class="icon" src="assests/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com">
+                        <img class="icon" src="assests/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://linkedin.com">
+                        <img class="icon" src="assests/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
