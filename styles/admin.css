@@ -17,13 +17,14 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 30px 5%;
     background-color: #222224;
 }
 
 .logo {
-    width: 50px;
     cursor: pointer;
+    margin-right: auto;
+    width: 50px;
 }
 
 .nav-links {
@@ -35,13 +36,13 @@ header {
     margin: 0 10px;
 }
 
-.nav-links a {
+.nav-links li a {
     color: #F7F7F7;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
+.nav-links li a:hover {
     color: #FFB22C;
 }
 
@@ -49,7 +50,7 @@ button {
     background-color: #FFB22C;
     color: #222224;
     border: none;
-    padding: 8px 20px;
+    padding: 7px 20px;
     border-radius: 30px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -57,34 +58,39 @@ button {
 
 button:hover {
     background-color: #F7F7F7;
+    color: #000000;
 }
 
 /* Admin Dashboard */
 .admin-dashboard {
+    min-height: 100vh;
+    padding: 40px 20px;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
 }
 
 h1 {
+    font-size: 48px;
     color: #FFB22C;
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 
 /* Tabs */
 .tabs {
     display: flex;
-    margin-bottom: 20px;
+    justify-content: center;
+    margin-bottom: 30px;
+    gap: 20px;
 }
 
 .tab-btn {
-    flex: 1;
-    padding: 10px;
+    padding: 10px 20px;
     background-color: #2a2a2c;
     border: none;
     color: #F7F7F7;
     cursor: pointer;
+    border-radius: 30px;
     transition: background-color 0.3s ease;
 }
 
@@ -95,9 +101,9 @@ h1 {
 
 .tab-content {
     display: none;
-    background-color: #2a2a2c;
-    padding: 20px;
-    border-radius: 8px;
+    background: #2a2a2c;
+    border-radius: 20px;
+    padding: 30px;
 }
 
 .tab-content.active {
@@ -106,24 +112,26 @@ h1 {
 
 /* Form Styles */
 .form-section {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background: linear-gradient(135deg, #2a2a2c, #121e13);
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 30px;
 }
 
 .form-section h3 {
     color: #FFB22C;
+    text-align: center;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     color: #F7F7F7;
 }
 
@@ -131,16 +139,17 @@ h1 {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     background-color: #222224;
     border: 1px solid #444;
     color: #F7F7F7;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 .form-actions {
     display: flex;
-    gap: 10px;
+    justify-content: center;
+    gap: 20px;
 }
 
 .submit-btn {
@@ -156,9 +165,10 @@ h1 {
 /* Table Styles */
 .existing-plans,
 .existing-users {
-    background-color: #333;
-    padding: 20px;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #2a2a2c, #121e13);
+    border-radius: 20px;
+    padding: 30px;
+    overflow-x: auto;
 }
 
 table {
@@ -169,20 +179,21 @@ table {
 table th,
 table td {
     border: 1px solid #444;
-    padding: 10px;
+    padding: 12px;
     text-align: left;
 }
 
 table th {
-    background-color: #2a2a2c;
+    background-color: #222224;
     color: #FFB22C;
 }
 
 .edit-btn,
 .delete-btn {
     margin: 0 5px;
-    padding: 5px 10px;
-    font-size: 0.8em;
+    padding: 8px 15px;
+    font-size: 0.9em;
+    border-radius: 20px;
 }
 
 .edit-btn {
@@ -210,6 +221,7 @@ table th {
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 20px;
 }
 
 .footer-section {
@@ -228,6 +240,11 @@ table th {
     text-decoration: none;
     display: block;
     margin: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #FFB22C;
 }
 
 .social-icons {
@@ -246,8 +263,15 @@ table th {
     transform: scale(1.2);
 }
 
+.footer-bottom {
+    background-color: #854836;
+    margin-top: 20px;
+    padding: 15px 0;
+    border-top: 5px solid #FFB22C;
+}
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     header {
         flex-direction: column;
         text-align: center;
@@ -256,5 +280,58 @@ table th {
     .nav-links {
         flex-direction: column;
         align-items: center;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .tabs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .tab-btn {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .form-actions button {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+
+    .footer-section {
+        flex: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    .form-section,
+    .existing-plans,
+    .existing-users {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    .edit-btn,
+    .delete-btn {
+        padding: 6px 10px;
+        font-size: 0.8em;
     }
 }
