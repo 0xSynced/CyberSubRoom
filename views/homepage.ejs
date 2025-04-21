@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CyberSubRoom</title>
+  <meta name="description" content="This is an example of meta description. This will often show up in search results.">
+  <link rel="stylesheet" href="/css/home.css">
+  <script src="/js/main.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+  </style>
+</head>
+<body>
+  <header>
+    <img class="logo" src="/assets/images.jpeg" alt="CyberSubRoom Logo">
+    <nav>
+        <ul class="nav-links">
+            <a href="/"><li>Home</li></a>
+            <a href="/plans"><li>Plans</li></a>
+        </ul>
+    </nav>    
+    <a class="login_button" href="/login"><button>Login</button></a>
+  </header>
+  <main>
+    <section>
+      <article>
+        <h1>We Protect</h1>
+        <p>Protect your digital world with our ultimate cybersecurity plan, combining advanced antivirus, privacy safeguards, and identity protection while enhancing device performance. Enjoy secure browsing with our encrypted VPN, manage your credentials effortlessly with our Password Manager, and stay safe from cyber threats with real-time malware protection. Plus, benefit from identity theft monitoring and expert Remote IT Support whenever you need it. Stay secure, stay private—get the protection you deserve today!</p>
+      </article>
+    </section>
+    <h2 class="our-plans">Our Plans</h2>
+    <section class="our-plans"> 
+      <div class="plans">
+        <% if (plans && plans.length > 0) { %>
+          <% plans.forEach(plan => { %>
+            <div class="plan-box <%= plan.name.toLowerCase() %>">
+              <h3><%= plan.name %></h3>
+              <p class="price">$<%= plan.price %></p>
+              <div class="features">
+                <%= plan.features %>
+              </div>
+            </div>
+          <% }); %>
+        <% } else { %>
+          <div class="plan-box free">Free Plan</div>
+          <div class="plan-box standard">Standard Plan</div>
+          <div class="plan-box premium">Premium Plan</div>
+        <% } %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>📍 SalahElDin, Riyadh, Saudi Arabia</p>
+            <p>📞 +966 590437680</p>
+            <p>📧 contact@CyberSubRoom.com</p>
+        </div>
+
+        <div class="footer-section quick-links">
+            <h3>Quick Links</h3>
+            <a href="/">Home</a>
+            <a href="/plans">Plans</a>
+            <a href="/feedback">Feedback</a>
+        </div>
+
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="https://facebook.com">
+                  <img class="icon" src="/assets/facebook.png" alt="Facebook">
+              </a>
+              <a href="https://twitter.com">
+                  <img class="icon" src="/assets/twitter.png" alt="Twitter">
+              </a>
+              <a href="https://instagram.com">
+                  <img class="icon" src="/assets/instagram.png" alt="Instagram">
+              </a>
+              <a href="https://linkedin.com">
+                  <img class="icon" src="/assets/linkedin.png" alt="LinkedIn">
+              </a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; <%= new Date().getFullYear() %> CyberSubRoom. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html> 

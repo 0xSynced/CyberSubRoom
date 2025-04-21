@@ -1,0 +1,27 @@
+<form action="/api/plans/search" method="GET" class="search-form">
+    <div class="search-box">
+        <input type="text" name="q" placeholder="Search plans..." value="<%= locals.searchTerm || '' %>">
+        <button type="submit" class="search-btn">Search</button>
+    </div>
+</form>
+
+<% if (locals.searchResults && searchResults.length > 0) { %>
+    <div class="search-results">
+        <h3>Search Results</h3>
+        <div class="plans">
+            <% searchResults.forEach(plan => { %>
+                <div class="plan-box <%= plan.name.toLowerCase() %>">
+                    <h3><%= plan.name %></h3>
+                    <p class="price">$<%= plan.price %></p>
+                    <div class="features">
+                        <%= plan.features %>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+<% } else if (locals.searchTerm) { %>
+    <div class="no-results">
+        <p>No plans found matching "<%= searchTerm %>"</p>
+    </div>
+<% } %> 
