@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- general meta tags -->
+    <meta charset="utf-8">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- site specific tags -->
+    <title>Register</title>
+    <meta name="description" content="Create your account to access CyberSubRoom services.">
+    <!-- style sheets -->
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
+    <!-- javascript files -->
+    <script src="scripts/register.js"></script>
+</head>
+
+<body>
+    <header class="login-header">
+        <nav>
+            <a href="homepage.html"><img src="./assests/images.jpeg" alt=""></a>
+            <ul>
+                <a href="homepage.html">
+                    <li>Home</li>
+                </a>
+                <a href="login.html">
+                    <li>Login</li>
+                </a>
+                <a href="plans.html">
+                    <li>Plans</li>
+                </a>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="login-hero">
+        <section class="login-form-hero">
+            <h1>Register</h1>
+            <form class="login-form" id="register-form" method="POST" action="/register">
+                <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" name="firstName" placeholder="Enter your first name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" id="last-name" name="lastName" placeholder="Enter your last name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+
+                <button type="submit" class="login-button">Register</button>
+            </form>
+        </section>
+    </main>
+    <hr>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 SalahElDin, Riyadh, Saudi Arabia</p>
+                <p>📞 +966 590437680</p>
+                <p>📧 contact@CyberSubRoom.com</p>
+            </div>
+
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <a href="./homepage.html">Home</a>
+                <a href="./plans.html">Plans</a>
+                <a href="./feedback.html">Feedback</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com">
+                        <img class="icon" src="assests/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com">
+                        <img class="icon" src="assests/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com">
+                        <img class="icon" src="assests/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://linkedin.com">
+                        <img class="icon" src="assests/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

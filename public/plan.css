@@ -1,0 +1,302 @@
+/* Inheriting base styles from home.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #222224;
+    font-family: montserrat-500
+}
+
+.montserrat-500 {
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: #FFB22C;
+}
+
+/* Header styles */
+li, a, button {
+    font-family: montserrat-500;
+    font-weight: 500;
+    font-size: 16px;
+    color: #F7F7F7;
+    text-decoration: none;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 5%;
+    background-color: #222224;
+}
+
+.logo {
+    cursor: pointer;
+    margin-right: auto;
+    width: 50px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li a {
+    transition: all 0.3s ease 0s;
+}
+
+.nav-links li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.nav-links li a:hover {
+    color: #FFB22C;
+}
+button {
+    padding: 7px 20px;
+    background-color: #FFB22C;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: #F7F7F7;
+    color: #000000;
+}
+
+
+
+
+
+/* Main content styles */
+main {
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 48px;
+    color: #FFB22C;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+
+  
+
+/* Plans container */
+.plans-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Plan cards */
+.plan-card {
+    background: #2a2a2c;
+    position: relative;
+    overflow: hidden; /* Add this to ensure children stay contained */
+    border-radius: 20px;
+    padding: 30px;
+    width: 350px;
+    margin: 15px;
+    transition: transform 0.3s ease;
+  }
+  
+
+.plan-card:hover {
+    transform: translateY(-10px);
+}
+
+.plan-card h2 {
+    color: #FFB22C;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: transparent;
+}
+
+.price {
+    font-size: 36px;
+    color: #F7F7F7;
+    text-align: center;
+    margin-bottom: 30px;
+    background: transparent;
+}
+
+.price span {
+    font-size: 16px;
+    background: transparent;
+}
+
+.features {
+    list-style: none;
+    margin-bottom: 30px;
+    background: transparent;
+}
+
+.features li {
+    color: #F7F7F7;
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    background: transparent;
+}
+
+.features li::before {
+    content: "✓";
+    color: #FFB22C;
+    position: absolute;
+    left: 0;
+    background: transparent;
+}
+
+/* Plan-specific styling */
+.free {
+    background: linear-gradient(135deg, #854836, #121e13);
+}
+
+.standard {
+    background: linear-gradient(135deg, #FFB22C, #121e13);
+}
+
+.premium {
+    background: linear-gradient(135deg, #007bff, #121e13);
+}
+
+.best-value {
+    position: absolute;
+    top: 15px; 
+    right: 15px;
+    z-index: 1;
+    background: #FFB22C;
+    color: #222224;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.plan-button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background-color: #FFB22C;
+    color: #222224;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.plan-button:hover {
+    background-color: #F7F7F7;
+    color: #222224;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #854836;
+    color: #F7F7F7;
+    text-align: center;
+    font-family: montserrat-500;
+    border-top: 5px solid #854836;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1500px;
+    margin: auto;
+    padding: 20px;
+    background-color: #854836;
+}
+
+.footer-section {
+    margin: 20px;
+    flex: 1;
+    min-width: 250px;
+    background: transparent;
+}
+
+.footer-section h3 {
+    color: #FFB22C;
+    margin-bottom: 15px;
+    background: transparent;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #F7F7F7;
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.3s;
+    background: transparent;
+}
+
+.footer-section a:hover {
+    color: #FFB22C;
+}
+
+.quick-links a {
+    display: block;
+    margin: 5px 5px;
+}
+
+.icon {
+    width: 30px;
+    height: auto;
+    margin: 5px;
+    transition: transform 0.3s ease-in-out;
+    background: transparent;
+}
+
+.icon:hover {
+    transform: scale(1.2);
+}
+
+.social-icons {
+    background: transparent;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 10px;
+    transition: 0.3s;
+    background: transparent;
+}
+
+footer p {
+    background-color: #854836;
+}
+
+.footer-bottom {
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 5px solid #854836;
+    font-size: 14px;
+    background: transparent;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .plans-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plan-card {
+        width: 100%;
+        max-width: 400px;
+        margin-bottom: 30px;
+    }
+}

@@ -1,0 +1,16 @@
+.price-warning {
+    display: block;
+    color: #FFB22C;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}
+
+.form-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.form-input[type="number"]::-webkit-outer-spin-button,
+.form-input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+} 

@@ -1,0 +1,80 @@
+:root {
+    --primary-color: #111111;    /* Deep black background */
+    --secondary-color: #FFD700;  /* Yellow from logo */
+    --text-color: white;      /* Pure white */
+    --accent-color: #333333;    /* Darker gray for depth */
+    --hover-color: #FFE44D;     /* Slightly lighter yellow for hover states */
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --border-radius: 30px;
+    --transition: all 0.3s ease 0s;
+}
+
+
+
+
+body {
+    font-family: montserrat-500, Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 30px 5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav img {
+    cursor: pointer;
+    margin-right: auto;
+    width: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--secondary-color);
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 500;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
