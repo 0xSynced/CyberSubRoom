@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="feedback.css">
     <!-- javascript files -->
-    <!-- <script src=".js"></script> -->
-
+    <script src="scripts/feedback.js" defer></script>
 </head>
 
 <body>
@@ -44,20 +43,18 @@
                 <p class="feedback-intro">We value your feedback and are committed to continuously improving our
                     services.</p>
 
-                <form class="feedback-form" action="/submit-feedback" method="post">
+                <form class="feedback-form" id="feedbackForm">
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required minlength="2"
                             placeholder="Enter your full name">
                     </div>
 
-
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input type="email" id="email" name="email" required placeholder="Enter your email"
                             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
                     </div>
-
 
                     <div class="form-group">
                         <label for="subject">Subject</label>
@@ -70,7 +67,6 @@
                         </select>
                     </div>
 
-
                     <div class="form-group">
                         <label for="feedback">Your Feedback</label>
                         <textarea id="feedback" name="feedback" required minlength="10" placeholder="Enter your message"
@@ -78,9 +74,8 @@
                     </div>
                     <div class="form-group">
                         <button type="submit">Submit</button>
-                    </span>
+                    </div>
                 </form>
-
 
                 <div id="successMessage" class="success-message" style="display: none;">
                     <h3>Thank you for your feedback!</h3>

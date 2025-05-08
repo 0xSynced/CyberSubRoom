@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const usernameInput = document.getElementById('username').value.trim();
       const password = document.getElementById('password').value.trim();
   
-      // Admin shortcut
+      // Admin shortcut [username: admin, password: admin] which will redirect to admin.html page :)
       if (usernameInput === 'admin' && password === 'admin') {
         window.location.href = '/admin.html';
         return;

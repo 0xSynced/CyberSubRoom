@@ -250,15 +250,15 @@ document.addEventListener('DOMContentLoaded', () => {
             .join('')
             .toUpperCase();
     }
-
+// RANDOM DATA GENERATION FOR USAGE METRICS (DONT WORRY ABOUT IT) :)
     // Update usage metrics based on plan
     function updateUsageMetrics(plan) {
         // Get plan price to determine limits
         const planPrice = getPlanPrice(plan);
         
         // Calculate storage and bandwidth limits based on price
-        const storageLimit = Math.min(100, Math.floor(planPrice * 10)); // 10% per dollar, max 100%
-        const bandwidthLimit = Math.min(100, Math.floor(planPrice * 8)); // 8% per dollar, max 100%
+        const storageLimit = Math.min(100, Math.floor(planPrice * 10)); // 10% of the plan price, max 100%
+        const bandwidthLimit = Math.min(100, Math.floor(planPrice * 8)); // 8% of the plan price, max 100%
         
         // Generate random usage within limits
         const storageUsage = Math.floor(Math.random() * 100); // Random between 0-100
@@ -273,8 +273,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('bandwidth-progress').style.width = `${bandwidthUsage}%`;
         
         // Generate random security stats
-        const ddosAttacks = Math.floor(Math.random() * 50); // Random number of DDoS attacks
-        const malwareDetected = Math.floor(Math.random() * 30); // Random number of malware detections
+        const ddosAttacks = Math.floor(Math.random() * 50); // Random number of DDoS attacks (0-50)
+        const malwareDetected = Math.floor(Math.random() * 30); // Random number of malware detections (0-30)
         
         // Update security stats
         document.getElementById('ddos-prevented').textContent = ddosAttacks;
@@ -282,8 +282,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('malware-detected').textContent = malwareDetected;
         document.getElementById('malware-value').textContent = malwareDetected;
 
-        // Update usage metrics every 30 seconds
-        setTimeout(() => updateUsageMetrics(plan), 30000);
+        // Update usage metrics every 60 seconds
+        setTimeout(() => updateUsageMetrics(plan), 60000);
     }
 
     function getPlanPrice(plan) {
@@ -297,6 +297,14 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
                 return 0;
         }
+    }
+
+    // Add event listener for plan renewal button
+    const renewalBtn = document.getElementById('renew-plan-btn');
+    if (renewalBtn) {
+        renewalBtn.addEventListener('click', () => {
+            document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+        });
     }
 
     // Initialize

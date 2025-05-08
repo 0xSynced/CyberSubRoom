@@ -702,3 +702,7 @@ h3 {
     background: linear-gradient(90deg, #FFB22C, #ff8c00);
     transition: width 0.3s ease;
 }
+
+a{ 
+    text-decoration: none;
+}

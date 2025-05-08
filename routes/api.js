@@ -18,9 +18,9 @@ router.get('/login', (req, res) => {
 router.post('/login', (req, res) => {
   const { username, password } = req.body;
   if (username === 'admin' && password === 'admin') {
-    return res.redirect('/admin');
+    return res.redirect('/admin.html');
   } else {
-    return res.redirect('/user');
+    return res.redirect('/user.html');
   }
 });
 
@@ -47,12 +47,18 @@ router.get('/user', (req, res) => {
 // API: Submit Feedback
 router.post('/feedback', async (req, res) => {
   try {
-    const { name, email, message } = req.body;
-    await Feedback.create({ name, email, message });
-    res.redirect('/feedback');
+    const { name, email, subject, message } = req.body;
+    await Feedback.create({ 
+      name, 
+      email, 
+      subject,
+      message
+      // createdAt and updatedAt will be automatically handled by Sequelize
+    });
+    res.status(201).json({ message: 'Feedback submitted successfully' });
   } catch (err) {
     console.error('Failed to save feedback:', err);
-    res.status(500).send('Server error');
+    res.status(500).json({ error: 'Server error' });
   }
 });
 
@@ -121,10 +127,10 @@ router.get('/api/search', async (req, res) => {
         }
       }
     });
-    res.json(results);
+    res.sendFile(path.join(__dirname, '../public/search-results.html'));
   } catch (err) {
     console.error('Search failed:', err);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).send('Search failed');
   }
 });
 
@@ -139,35 +145,35 @@ router.get('/api/users', async (req, res) => {
 });
 
 router.post('/api/users', async (req, res) => {
-    try {
-      const {
-        name,
-        email,
-        role,
-        plan,
-        status,
-        joinDate,
-        notes
-      } = req.body;
-  
-      await User.create({
-        name,
-        email,
-        role,
-        plan,
-        status,
-        joinDate,
-        notes,
-        lastLogin: new Date()
-      });
-  
-      res.status(201).json({ message: 'User added' });
-    } catch (err) {
-      console.error('Error adding user:', err);
-      res.status(500).json({ error: 'Server error' });
-    }
-  });
-  
+  try {
+    const {
+      name,
+      email,
+      role,
+      plan,
+      status,
+      joinDate,
+      notes
+    } = req.body;
+
+    await User.create({
+      name,
+      email,
+      role,
+      plan,
+      status,
+      joinDate,
+      notes,
+      lastLogin: new Date()
+    });
+
+    res.status(201).json({ message: 'User added' });
+  } catch (err) {
+    console.error('Error adding user:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 router.delete('/api/users/:id', async (req, res) => {
   try {
     await User.destroy({ where: { id: req.params.id } });
@@ -180,43 +186,49 @@ router.delete('/api/users/:id', async (req, res) => {
 
 // UPDATE user by ID
 router.put('/api/users/:id', async (req, res) => {
-    try {
-      const { name, email, role, plan, status } = req.body;
-      await User.update(
-        { name, email, role, plan, status },
-        { where: { id: req.params.id } }
-      );
-      res.status(200).json({ message: 'User updated' });
-    } catch (err) {
-      console.error('Error updating user:', err);
-      res.status(500).json({ error: 'Server error' });
+  try {
+    const { name, email, role, plan, status, password } = req.body;
+    const updateData = { name, email, role, plan, status };
+    
+    // Only include password in update if it was provided
+    if (password) {
+      updateData.password = password;
     }
-  });
+    
+    await User.update(
+      updateData,
+      { where: { id: req.params.id } }
+    );
+    res.status(200).json({ message: 'User updated' });
+  } catch (err) {
+    console.error('Error updating user:', err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
 
-  // API: User Registration
-  router.post('/register', async (req, res) => {
-    try {
-      const { firstName, lastName, email, password } = req.body;
-  
-      const fullName = `${firstName} ${lastName}`;
-      const existingUser = await User.findOne({ where: { email } });
-      if (existingUser) return res.status(409).json({ error: 'Email already registered' });
-  
-      await User.create({
-        name: fullName,
-        email,
-        password,
-        role: 'user',
-        plan: 'free',
-        status: 'active'
-      });
-  
-      res.status(201).json({ message: 'Registered successfully. You can now login.' });
-    } catch (err) {
-      console.error('Registration failed:', err);
-      res.status(500).json({ error: 'Internal server error' });
-    }
-  });
-  
+// API: User Registration
+router.post('/register', async (req, res) => {
+  try {
+    const { firstName, lastName, email, password } = req.body;
+
+    const fullName = `${firstName} ${lastName}`;
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) return res.status(409).json({ error: 'Email already registered' });
+
+    await User.create({
+      name: fullName,
+      email,
+      password,
+      role: 'user',
+      plan: 'free',
+      status: 'active'
+    });
+
+    res.status(201).json({ message: 'Registered successfully. You can now login.' });
+  } catch (err) {
+    console.error('Registration failed:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 module.exports = router;

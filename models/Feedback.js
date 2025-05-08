@@ -14,9 +14,15 @@ const Feedback = sequelize.define('Feedback', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  subject: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 }, {
   tableName: 'feedback',
-  timestamps: false
+  timestamps: true,
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 });
 
 module.exports = Feedback;
