@@ -1,16 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('register-form');
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email');
+  const passwordInput = document.getElementById('password');
+
+  // Real-time username validation
+  usernameInput.addEventListener('input', () => {
+    const username = usernameInput.value.trim();
+    if (username.includes(' ')) {
+      usernameInput.setCustomValidity('Username cannot contain spaces');
+    } else if (/^\d/.test(username)) {
+      usernameInput.setCustomValidity('Username cannot start with a number');
+    } else {
+      usernameInput.setCustomValidity('');
+    }
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const firstName = document.getElementById('first-name').value.trim();
-    const lastName = document.getElementById('last-name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const password = document.getElementById('password').value.trim();
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const password = passwordInput.value.trim();
 
-    if (!firstName || !lastName || !email || !password) {
-      return alert('All fields are required.');
+    // Validate username
+    if (!username) {
+      return alert('Username is required.');
+    }
+    if (username.includes(' ')) {
+      return alert('Username cannot contain spaces.');
+    }
+    if (/^\d/.test(username)) {
+      return alert('Username cannot start with a number.');
+    }
+
+    // Validate email
+    if (!email || !email.includes('@')) {
+      return alert('Valid email is required.');
+    }
+
+    // Validate password
+    if (!password) {
+      return alert('Password is required.');
     }
 
     try {
@@ -20,19 +51,23 @@ document.addEventListener('DOMContentLoaded', () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          firstName,
-          lastName,
+          username,
           email,
           password
         })
       });
 
-      if (res.ok) {
-        alert('Registration successful!');
-        window.location.href = '/login.html';
+      if (res.redirected) {
+        window.location.href = res.url;
       } else {
-        const { error } = await res.json();
-        alert(error || 'Registration failed');
+        const data = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
+        const errorMessage = doc.querySelector('.error-message');
+        
+        if (errorMessage) {
+          alert(errorMessage.textContent);
+        }
       }
     } catch (err) {
       console.error('Registration error:', err);

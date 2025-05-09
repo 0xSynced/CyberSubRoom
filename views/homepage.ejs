@@ -9,26 +9,24 @@
   <title>CyberSubRoom</title>
   <meta name="description" content="This is an example of meta description. This will often show up in search results.">
   <!-- style sheets -->
-  <!-- <link rel="stylesheet" href="/styles/css-reset.css"> -->
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="/home.css">
   <!-- javascript files -->
   <script src=".js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
-    </style>
-
+  </style>
 </head>
 <body>
   <header>
-    <img class="logo" src="./assests/images.jpeg" alt="">
+    <img class="logo" src="/assests/images.jpeg" alt="">
     <nav>
         <ul class="nav-links">
-            <a href="homepage.html"><li>Home</li></a>
-            <a href="plans.html"><li>Plans</li></a>
+            <a href="/"><li>Home</li></a>
+            <a href="/plans"><li>Plans</li></a>
         </ul>
     </nav>    
-    <a class="login_buton" href="login.html"><button>Login</button></a>
-    </header>
+    <a class="login_buton" href="/login"><button>Login</button></a>
+  </header>
   <main>
     <section>
       <article>
@@ -37,7 +35,7 @@
       </article>
     </section>
     <h2 class="our-plans">Our Plans</h2>
-    <section class="our-plans" > 
+    <section class="our-plans"> 
           <div class="plans">
           <div class="plan-box free">Free Plan</div>
           <div class="plan-box standard">Standard Plan</div>
@@ -47,7 +45,6 @@
 
   <footer class="footer">
     <div class="footer-container">
-
         <!-- Contact Section -->
         <div class="footer-section">
             <h3>Contact Us</h3>
@@ -59,11 +56,9 @@
         <!-- Quick Links -->
         <div class="footer-section quick-links">
             <h3>Quick Links</h3>
-            <a href="./homepage.html">Home</a>
-            <a href="./plans.html">Plans</a>
-            <a href="./feedback.html">Feedback</a>
-            
-            
+            <a href="/">Home</a>
+            <a href="/plans">Plans</a>
+            <a href="/feedback">Feedback</a>
         </div>
 
         <!-- Social Media -->
@@ -71,25 +66,22 @@
             <h3>Follow Us</h3>
             <div class="social-icons">
               <a href="https://facebook.com">
-                  <img class="icon" src="assests/facebook.png" alt="Facebook" >
+                  <img class="icon" src="/assests/facebook.png" alt="Facebook">
               </a>
               <a href="https://twitter.com">
-                  <img class="icon" src="assests/twitter.png" alt="Twitter" >
+                  <img class="icon" src="/assests/twitter.png" alt="Twitter">
               </a>
               <a href="https://instagram.com">
-                  <img class="icon" src="assests/instagram.png" alt="Instagram" >
+                  <img class="icon" src="/assests/instagram.png" alt="Instagram">
               </a>
               <a href="https://linkedin.com">
-                  <img class="icon" src="assests/linkedin.png" alt="LinkedIn" >
+                  <img class="icon" src="/assests/linkedin.png" alt="LinkedIn">
               </a>
           </div>
-          
         </div>
-
     </div>
-
     
     <div class="footer-bottom">
-        <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+        <p>&copy; <%= new Date().getFullYear() %> CyberSubRoom. All Rights Reserved.</p>
     </div>
-</footer>
+</footer> 

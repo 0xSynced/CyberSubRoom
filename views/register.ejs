@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- general meta tags -->
     <meta charset="utf-8">
@@ -10,25 +9,25 @@
     <title>Register</title>
     <meta name="description" content="Create your account to access CyberSubRoom services.">
     <!-- style sheets -->
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/login.css">
     <!-- javascript files -->
-    <script src="scripts/register.js"></script>
+    <script src="/scripts/register.js"></script>
 </head>
 
 <body>
     <header class="login-header">
         <nav>
-            <a href="homepage.html"><img src="./assests/images.jpeg" alt=""></a>
+            <a href="/"><img src="/assests/images.jpeg" alt=""></a>
             <ul>
-                <a href="homepage.html">
+                <a href="/">
                     <li>Home</li>
                 </a>
-                <a href="login.html">
+                <a href="/login">
                     <li>Login</li>
                 </a>
-                <a href="plans.html">
+                <a href="/plans">
                     <li>Plans</li>
                 </a>
             </ul>
@@ -38,15 +37,16 @@
     <main class="login-hero">
         <section class="login-form-hero">
             <h1>Register</h1>
+            <% if (typeof error !== 'undefined') { %>
+                <div class="error-message">
+                    <%= error %>
+                </div>
+            <% } %>
             <form class="login-form" id="register-form" method="POST" action="/register">
                 <div class="form-group">
-                    <label for="first-name">First Name</label>
-                    <input type="text" id="first-name" name="firstName" placeholder="Enter your first name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="last-name">Last Name</label>
-                    <input type="text" id="last-name" name="lastName" placeholder="Enter your last name" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                    <small class="form-text">Username cannot contain spaces or start with a number</small>
                 </div>
 
                 <div class="form-group">
@@ -56,10 +56,11 @@
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
 
                 <button type="submit" class="login-button">Register</button>
+                <button type="button" class="register-button" onclick="window.location.href='/login'">Back to Login</button>
             </form>
         </section>
     </main>
@@ -76,34 +77,33 @@
 
             <div class="footer-section quick-links">
                 <h3>Quick Links</h3>
-                <a href="./homepage.html">Home</a>
-                <a href="./plans.html">Plans</a>
-                <a href="./feedback.html">Feedback</a>
+                <a href="/">Home</a>
+                <a href="/plans">Plans</a>
+                <a href="/feedback">Feedback</a>
             </div>
 
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
                     <a href="https://facebook.com">
-                        <img class="icon" src="assests/facebook.png" alt="Facebook">
+                        <img class="icon" src="/assests/facebook.png" alt="Facebook">
                     </a>
                     <a href="https://twitter.com">
-                        <img class="icon" src="assests/twitter.png" alt="Twitter">
+                        <img class="icon" src="/assests/twitter.png" alt="Twitter">
                     </a>
                     <a href="https://instagram.com">
-                        <img class="icon" src="assests/instagram.png" alt="Instagram">
+                        <img class="icon" src="/assests/instagram.png" alt="Instagram">
                     </a>
                     <a href="https://linkedin.com">
-                        <img class="icon" src="assests/linkedin.png" alt="LinkedIn">
+                        <img class="icon" src="/assests/linkedin.png" alt="LinkedIn">
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+            <p>&copy; <%= new Date().getFullYear() %> CyberSubRoom. All Rights Reserved.</p>
         </div>
     </footer>
 </body>
-
-</html>
+</html> 

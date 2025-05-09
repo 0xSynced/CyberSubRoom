@@ -356,13 +356,14 @@ h3 {
 .current-tag {
     position: absolute;
     top: -10px;
-    right: 10px;
+    left: 10px;
     background-color: #FFB22C;
     color: #222224;
     padding: 2px 10px;
     border-radius: 10px;
     font-size: 12px;
     font-weight: 600;
+    z-index: 1;
 }
 
 .plan-card h3 {
@@ -384,21 +385,40 @@ h3 {
 
 .plan-card ul {
     list-style-type: none;
-    margin-bottom: 20px;
+    margin: 15px 0;
+    padding-left: 0;
 }
 
 .plan-card li {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     position: relative;
-    padding-left: 20px;
+    padding-left: 28px;
     font-size: 14px;
+    color: #ddd;
+    line-height: 1.4;
 }
 
 .plan-card li:before {
-    content: "•";
+    content: "✓";
     position: absolute;
-    left: 0;
+    left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.plan-card.free li:before {
+    color: #4caf50;
+    content: "✓";
+}
+
+.plan-card.standard li:before {
+    color: #2196f3;
+    content: "✓";
+}
+
+.plan-card.premium li:before {
     color: #FFB22C;
+    content: "✓";
 }
 
 .plan-card-btn {
@@ -705,4 +725,195 @@ h3 {
 
 a{ 
     text-decoration: none;
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.error-message p {
+    color: #ff4444;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.retry-btn {
+    background: #4CAF50;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.retry-btn:hover {
+    background: #45a049;
+}
+
+/* Loading and error states */
+.loading-message {
+    text-align: center;
+    padding: 20px;
+    color: #555;
+    font-size: 16px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.error-message {
+    text-align: center;
+    padding: 20px;
+    background-color: #ffecec;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.error-message p {
+    color: #e74c3c;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.retry-btn {
+    background-color: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.retry-btn:hover {
+    background-color: #2ecc71;
+}
+
+/* Plan Types Specific Styling */
+.plan-card.free {
+    border-color: #4caf50;
+}
+
+.plan-card.standard {
+    border-color: #2196f3;
+}
+
+.plan-card.premium {
+    border-color: #FFB22C;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.plan-card.free .plan-card-btn {
+    border-color: #4caf50;
+    color: #4caf50;
+}
+
+.plan-card.free .plan-card-btn:hover:not(:disabled) {
+    background-color: #4caf50;
+    color: white;
+}
+
+.plan-card.standard .plan-card-btn {
+    border-color: #2196f3;
+    color: #2196f3;
+}
+
+.plan-card.standard .plan-card-btn:hover:not(:disabled) {
+    background-color: #2196f3;
+    color: white;
+}
+
+.plan-card.premium .plan-card-btn {
+    border-color: #FFB22C;
+    color: #FFB22C;
+}
+
+.plan-card.premium .plan-card-btn:hover:not(:disabled) {
+    background-color: #FFB22C;
+    color: white;
+}
+
+.plan-card.free li:before {
+    color: #4caf50;
+}
+
+.plan-card.standard li:before {
+    color: #2196f3;
+}
+
+.plan-card.premium li:before {
+    color: #FFB22C;
+}
+
+/* Plan card text colors */
+.plan-card h3,
+.plan-card .plan-card-price,
+.plan-card .plan-description,
+.plan-card li {
+    color: #F7F7F7;
+}
+
+.plan-card.free h3,
+.plan-card.standard h3,
+.plan-card.premium h3 {
+    color: #F7F7F7;
+    font-weight: bold;
+}
+
+.plan-card.free .plan-card-price,
+.plan-card.standard .plan-card-price,
+.plan-card.premium .plan-card-price {
+    color: #F7F7F7;
+    font-weight: bold;
+}
+
+.plan-card.free {
+    background: linear-gradient(145deg, #222224, #2a2a2c);
+    border: 2px solid #4caf50;
+}
+
+.plan-card.standard {
+    background: linear-gradient(145deg, #222224, #2a2a2c);
+    border: 2px solid #2196f3;
+}
+
+.plan-card.premium {
+    background: linear-gradient(145deg, #222224, #2a2a2c);
+    border: 2px solid #FFB22C;
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Plan card title and price colors */
+.plan-card.free h3 {
+    color: #4caf50;
+}
+
+.plan-card.standard h3 {
+    color: #2196f3;
+}
+
+.plan-card.premium h3 {
+    color: #FFB22C;
+}
+
+.best-value {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background-color: #FFB22C;
+    color: #222224;
+    padding: 2px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    z-index: 1;
 }

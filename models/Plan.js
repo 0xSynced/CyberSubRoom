@@ -14,6 +14,14 @@ const Plan = sequelize.define('Plan', {
     type: DataTypes.TEXT,
     allowNull: true,
   },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    defaultValue: function() {
+      // Default to lowercase of name if not provided
+      return this.name ? this.name.toLowerCase() : 'free';
+    }
+  }
 }, {
   tableName: 'plans',
   timestamps: false

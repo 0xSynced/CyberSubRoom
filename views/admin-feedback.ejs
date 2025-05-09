@@ -4,23 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CyberSubRoom - Manage Feedback</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="/admin.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
     </style>
-    <script src="scripts/admin-feedback.js" defer></script>
+    <script src="/scripts/admin-feedback.js" defer></script>
 </head>
 <body>
     <header>
-        <img class="logo" src="./assests/images.jpeg" alt="CyberSubRoom Logo">
+        <img class="logo" src="/assests/images.jpeg" alt="CyberSubRoom Logo">
         <nav>
             <ul class="nav-links">
-                <li><a href="homepage.html">Home</a></li>
-                <li><a href="plans.html">Plans</a></li>
-                <li><a href="admin.html">Admin</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/plans">Plans</a></li>
+                <li><a href="/admin">Admin</a></li>
             </ul>
         </nav>
-        <a href="login.html"><button>Logout</button></a>
+        <a href="/login"><button>Logout</button></a>
     </header>
 
     <main class="admin-dashboard">
@@ -28,9 +28,9 @@
 
         <div class="dashboard-container">
             <div class="admin-nav">
-                <a href="admin.html" class="admin-nav-link">Manage Plans</a>
-                <a href="admin-manage-user.html" class="admin-nav-link">Manage Users</a>
-                <a href="admin-feedback.html" class="admin-nav-link active">Manage Feedback</a>
+                <a href="/admin" class="admin-nav-link">Manage Plans</a>
+                <a href="/admin-manage-user" class="admin-nav-link">Manage Users</a>
+                <a href="/admin-feedback" class="admin-nav-link active">Manage Feedback</a>
             </div>
 
             <div class="admin-content">
@@ -49,7 +49,24 @@
                             </tr>
                         </thead>
                         <tbody id="feedbackTableBody">
-                            <!-- Feedback items will be loaded here -->
+                            <% if (typeof feedbacks !== 'undefined' && feedbacks.length > 0) { %>
+                                <% feedbacks.forEach(feedback => { %>
+                                    <tr>
+                                        <td><%= feedback.name %></td>
+                                        <td><%= feedback.email %></td>
+                                        <td><%= feedback.subject %></td>
+                                        <td><%= feedback.message %></td>
+                                        <td><%= new Date(feedback.createdAt).toLocaleDateString() %></td>
+                                        <td>
+                                            <button class="delete-btn" data-id="<%= feedback.id %>">Delete</button>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            <% } else { %>
+                                <tr>
+                                    <td colspan="6">No feedback found</td>
+                                </tr>
+                            <% } %>
                         </tbody>
                     </table>
                 </div>
@@ -68,31 +85,31 @@
 
             <div class="footer-section quick-links">
                 <h3>Quick Links</h3>
-                <a href="./homepage.html">Home</a>
-                <a href="./plans.html">Plans</a>
-                <a href="/feedback.html">Feedback</a>
+                <a href="/">Home</a>
+                <a href="/plans">Plans</a>
+                <a href="/feedback">Feedback</a>
             </div>
 
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
                     <a href="https://facebook.com">
-                        <img class="icon" src="assests/facebook.png" alt="Facebook">
+                        <img class="icon" src="/assests/facebook.png" alt="Facebook">
                     </a>
                     <a href="https://twitter.com">
-                        <img class="icon" src="assests/twitter.png" alt="Twitter">
+                        <img class="icon" src="/assests/twitter.png" alt="Twitter">
                     </a>
                     <a href="https://instagram.com">
-                        <img class="icon" src="assests/instagram.png" alt="Instagram">
+                        <img class="icon" src="/assests/instagram.png" alt="Instagram">
                     </a>
                     <a href="https://linkedin.com">
-                        <img class="icon" src="assests/linkedin.png" alt="LinkedIn">
+                        <img class="icon" src="/assests/linkedin.png" alt="LinkedIn">
                     </a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 CyberSubRoom. All Rights Reserved.</p>
+            <p>&copy; <%= new Date().getFullYear() %> CyberSubRoom. All Rights Reserved.</p>
         </div>
     </footer>
 </body>

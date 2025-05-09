@@ -1,6 +1,6 @@
 // public/scripts/user.js
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // DOM Elements
     const userNameEl = document.querySelector('#user-fullname');
     const userPlanBadge = document.querySelector('#user-plan');
@@ -18,14 +18,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fetch user data
     async function fetchUser() {
-        const email = localStorage.getItem('loggedInUserEmail');
-        if (!email) return (window.location.href = '/login.html');
-
         try {
-            const res = await fetch('/api/users');
-            const users = await res.json();
-            currentUser = users.find(u => u.email === email);
-            if (!currentUser) return (window.location.href = '/login.html');
+            // Get user data from the server using the session
+            const res = await fetch('/api/users/me');
+            if (!res.ok) {
+                if (res.status === 401) {
+                    window.location.href = '/login';
+                    return null;
+                }
+                throw new Error('Failed to fetch user data');
+            }
+            
+            currentUser = await res.json();
+            if (!currentUser) {
+                window.location.href = '/login';
+                return null;
+            }
 
             // Update user info
             userNameEl.textContent = currentUser.name;
@@ -49,51 +57,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Update usage metrics
             updateUsageMetrics(currentUser.plan);
+            
+            return currentUser;
         } catch (error) {
             console.error('Error fetching user data:', error);
-            if (!currentUser) {
-                alert('Error loading user data. Please try again.');
-            }
+            window.location.href = '/login';
+            return null;
         }
     }
 
-    // Load available plans
-    async function loadPlans() {
-        try {
-            const res = await fetch('/api/plans');
-            const plans = await res.json();
-            planOptionsContainer.innerHTML = '';
-
-            plans.forEach(plan => {
-                const div = document.createElement('div');
-                div.classList.add('plan-card');
-                if (plan.name.toLowerCase() === currentUser.plan.toLowerCase()) {
-                    div.classList.add('current');
-                }
-                div.innerHTML = `
-                    ${plan.name.toLowerCase() === currentUser.plan.toLowerCase() ? '<div class="current-tag">CURRENT</div>' : ''}
-                    <h3>${plan.name}</h3>
-                    <div class="plan-card-price">$${parseFloat(plan.price).toFixed(2)} <span>/ month</span></div>
-                    <ul>
-                        <li>${plan.description.split('\n')[0]}</li>
-                        <li>${plan.description.split('\n')[1] || '24/7 Support'}</li>
-                        <li>${plan.description.split('\n')[2] || 'Advanced Protection'}</li>
-                    </ul>
-                    <button class="plan-card-btn" ${plan.name.toLowerCase() === currentUser.plan.toLowerCase() ? 'disabled' : ''} data-plan="${plan.name}">
-                        ${plan.name.toLowerCase() === currentUser.plan.toLowerCase() ? 'Current Plan' : 'Choose'}
-                    </button>
-                `;
-                planOptionsContainer.appendChild(div);
-            });
-
-            // Add event listeners to plan buttons
-            document.querySelectorAll('.plan-card-btn').forEach(btn => {
-                btn.addEventListener('click', handlePlanChange);
-            });
-        } catch (error) {
-            console.error('Error loading plans:', error);
-            alert('Error loading plans. Please try again.');
-        }
+    // Add event listeners to plan buttons
+    function setupPlanButtons() {
+        console.log('Setting up plan button event listeners');
+        document.querySelectorAll('.plan-card-btn').forEach(btn => {
+            btn.addEventListener('click', handlePlanChange);
+        });
+        console.log('Plan buttons setup complete');
     }
 
     // Handle plan change
@@ -121,10 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) throw new Error('Failed to update plan');
 
             alert('Plan updated successfully!');
-            await fetchUser();
-            await loadPlans();
-            // Update usage metrics after plan change
-            updateUsageMetrics(selectedPlan);
+            window.location.reload(); // Reload the page to reflect changes
         } catch (error) {
             console.error('Error updating plan:', error);
             alert('Error updating plan. Please try again.');
@@ -184,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             localStorage.removeItem('loggedInUserEmail');
             alert('Account deleted successfully');
-            window.location.href = '/register.html';
+            window.location.href = '/register';
         } catch (error) {
             console.error('Error deleting account:', error);
             alert('Error deleting account. Please try again.');
@@ -219,14 +195,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Helper functions
     function capitalize(str) {
+        if (!str) return '';
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
     function planPricing(plan) {
-        if (plan === 'free') return '$0 <span class="plan-period">/ month</span>';
-        if (plan === 'standard') return '$9.99 <span class="plan-period">/ month</span>';
-        if (plan === 'premium') return '$19.99 <span class="plan-period">/ month</span>';
-        return '';
+        if (!plan) return '$0 <span class="plan-period">/ month</span>';
+        
+        const planLower = plan.toLowerCase();
+        if (planLower === 'free') return '$0 <span class="plan-period">/ month</span>';
+        if (planLower === 'standard') return '$9.99 <span class="plan-period">/ month</span>';
+        if (planLower === 'premium') return '$19.99 <span class="plan-period">/ month</span>';
+        
+        // Default pricing based on plan name
+        const price = getPlanPrice(planLower);
+        return `$${price.toFixed(2)} <span class="plan-period">/ month</span>`;
     }
 
     function validatePrice(price) {
@@ -250,7 +233,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .join('')
             .toUpperCase();
     }
-// RANDOM DATA GENERATION FOR USAGE METRICS (DONT WORRY ABOUT IT) :)
+
+    // RANDOM DATA GENERATION FOR USAGE METRICS (DONT WORRY ABOUT IT) :)
     // Update usage metrics based on plan
     function updateUsageMetrics(plan) {
         // Get plan price to determine limits
@@ -307,7 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialize
-    fetchUser();
-    loadPlans();
+    // Initialize the page
+    try {
+        console.log('Initializing user dashboard...');
+        currentUser = await fetchUser();
+        if (currentUser) {
+            console.log('User data loaded, setting up plan buttons...');
+            setupPlanButtons();
+        }
+    } catch (error) {
+        console.error('Error initializing page:', error);
+    }
 });

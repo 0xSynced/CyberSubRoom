@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CyberSubRoom - User Dashboard</title>
+    <link rel="stylesheet" href="/user-dashboard.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+    </style>
+    <script defer src="/scripts/user.js"></script>
+</head>
+<body>
+    <header>
+        <img class="logo" src="/assests/images.jpeg" alt="CyberSubRoom Logo">
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/plans">Plans</a></li>
+            </ul>
+        </nav>    
+        <a href="/login"><button>Logout</button></a>
+    </header>
+
+    <div class="container">
+        <h1>User Dashboard</h1>
+
+        <!-- User Info Section -->
+        <div class="user-info">
+            <div class="user-details">
+                <div class="user-avatar" id="user-initials">
+                    <%= user.name ? user.name.split(' ').map(n => n[0]).join('').toUpperCase() : 'U' %>
+                </div>
+                <div class="user-text">
+                    <h2 id="user-fullname"><%= user.name %></h2>
+                    <div>Current Plan: <span class="plan-badge" id="user-plan"><%= user.plan %></span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Status Section -->
+        <div class="security-status">
+            <div class="status-item">
+                <div class="status-icon <%= user.status === 'active' ? 'secure' : 'warning' %>">✓</div>
+                <div class="status-text">
+                    <h3>Account Status</h3>
+                    <p id="account-status"><%= user.status %></p>
+                </div>
+            </div>
+            <div class="status-item">
+                <div class="status-icon secure">✓</div>
+                <div class="status-text">
+                    <h3>Last Login</h3>
+                    <p id="last-login"><%= new Date(user.lastLogin).toLocaleDateString() %></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Details Section -->
+        <div class="plan-details">
+            <div class="plan-header">
+                <div class="plan-name" id="current-plan-name"><%= user.plan %> Plan</div>
+                <div class="plan-price" id="current-plan-price">
+                    <% if (typeof currentPlan !== 'undefined' && currentPlan.price !== undefined && currentPlan.price !== null) { %>
+                        $<%= parseFloat(currentPlan.price).toFixed(2) %> 
+                        <span class="plan-period">/ month</span>
+                    <% } else { %>
+                        $0.00 <span>/ month</span>
+                    <% } %>
+                </div>
+            </div>
+            <div class="plan-features">
+                <ul>
+                    <% if (typeof currentPlan !== 'undefined' && currentPlan.features) { %>
+                        <% currentPlan.features.forEach(feature => { %>
+                            <li><%= feature %></li>
+                        <% }); %>
+                    <% } else { %>
+                        <li>Basic Protection</li>
+                        <li>Email Support</li>
+                        <li>24/7 Monitoring</li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="plan-actions">
+                <a href="#plans" class="edit-plan-btn"><button class="edit-btn" id="edit-plan-btn">Edit Plan</button></a>
+                <button class="renewal-btn" id="renew-plan-btn">Renew Plan</button>
+            </div>
+        </div>
+
+        <!-- Usage Section -->
+        <div class="usage-section">
+            <div class="usage-item">
+                <div class="usage-label">
+                    <span class="usage-title">Storage Usage</span>
+                    <span class="usage-value" id="storage-usage"><%= user.storageUsage || 0 %>%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="storage-progress"></div>
+                </div>
+                <script>
+                    document.getElementById('storage-progress').style.width = '<%= user.storageUsage || 0 %>%';
+                </script>
+            </div>
+            <div class="usage-item">
+                <div class="usage-label">
+                    <span class="usage-title">Bandwidth Usage</span>
+                    <span class="usage-value" id="bandwidth-usage"><%= user.bandwidthUsage || 0 %>%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" id="bandwidth-progress"></div>
+                </div>
+                <script>
+                    document.getElementById('bandwidth-progress').style.width = '<%= user.bandwidthUsage || 0 %>%';
+                </script>
+            </div>
+            <div class="usage-item">
+                <div class="usage-label">
+                    <span class="usage-title">DDoS Attacks Prevented</span>
+                    <span class="usage-value" id="ddos-prevented"><%= user.ddosPrevented || 0 %></span>
+                </div>
+                <div class="security-stats">
+                    <div class="stat-icon">🛡️</div>
+                    <div class="stat-value" id="ddos-value"><%= user.ddosPrevented || 0 %></div>
+                </div>
+            </div>
+            <div class="usage-item">
+                <div class="usage-label">
+                    <span class="usage-title">Malware Detected</span>
+                    <span class="usage-value" id="malware-detected"><%= user.malwareDetected || 0 %></span>
+                </div>
+                <div class="security-stats">
+                    <div class="stat-icon">🔍</div>
+                    <div class="stat-value" id="malware-value"><%= user.malwareDetected || 0 %></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan Options -->
+        <div class="plan-options" id="plans">
+            <h2>Available Plans</h2>
+            <p>Select a plan to change your subscription:</p>
+            <div id="plan-cards-container" class="plan-options-container">
+                <% if (availablePlans && availablePlans.length > 0) { %>
+                    <% availablePlans.forEach(plan => { 
+                        // Define type based on name if not present
+                        const planType = plan.type || plan.name.toLowerCase();
+                        
+                        // Ensure price is a valid number
+                        let planPrice = typeof plan.price === 'number' ? plan.price : 
+                                        typeof plan.price === 'string' ? parseFloat(plan.price) : 0;
+                        
+                        // Don't override prices anymore, let custom plan prices show
+                        /*
+                        if (planType === 'free' || plan.name.toLowerCase() === 'free') {
+                            planPrice = 0;
+                        } else if (planType === 'standard' || plan.name.toLowerCase() === 'standard') {
+                            planPrice = 9.99;
+                        } else if (planType === 'premium' || plan.name.toLowerCase() === 'premium') {
+                            planPrice = 19.99;
+                        }
+                        */
+                        
+                        const isCurrent = user && plan.name && user.plan && 
+                                         plan.name.toLowerCase() === user.plan.toLowerCase();
+                        const isPremium = planType === 'premium' || plan.name.toLowerCase() === 'premium';
+                        const isStandard = planType === 'standard' || plan.name.toLowerCase() === 'standard';
+                        const isFree = planType === 'free' || plan.name.toLowerCase() === 'free';
+                        
+                        // Define features based on price only
+                        let features = ['24/7 Basic Support', 'Email Notifications'];
+                        
+                        // Additional features based on price tiers
+                        if (planPrice > 0) {
+                            features.push('Advanced Threat Detection', 'Real-time Monitoring');
+                        }
+                        
+                        if (planPrice >= 9.99) {
+                            features.push('DDoS Protection', 'Malware Scanning', 'VPN Access');
+                        }
+                        
+                        if (planPrice >= 19.99) {
+                            features.push('Priority Support', 'Advanced Firewall', 'Cloud Backup', 'Custom Security Rules', 'Team Management');
+                        }
+                        
+                        if (planPrice >= 99) {
+                            features.push('Enterprise Support', 'Dedicated Security Team');
+                        }
+                        
+                        if (planPrice >= 499) {
+                            features.push('Physical Security Consultation', 'Risk Assessment');
+                        }
+                    %>
+                        <div class="plan-card <%= planType %> <%= isCurrent ? 'current' : '' %>">
+                            <% if (isCurrent) { %>
+                                <div class="current-tag">CURRENT</div>
+                            <% } %>
+                            <% if (isPremium) { %>
+                                <div class="best-value">Best Value</div>
+                            <% } %>
+                            <h3><%= plan.name %></h3>
+                            <div class="plan-card-price">
+                                $<%= parseFloat(planPrice).toFixed(2) %> <span>/ month</span>
+                            </div>
+                            <p class="plan-description">
+                                <% if (planType === 'standard' || plan.name.toLowerCase() === 'standard') { %>
+                                    Enhanced protection for small businesses
+                                <% } else if (planType === 'premium' || plan.name.toLowerCase() === 'premium') { %>
+                                    Complete protection for enterprises
+                                <% } else if (planType === 'free' || plan.name.toLowerCase() === 'free') { %>
+                                    Basic protection for individuals
+                                <% } else { %>
+                                    <%= plan.description || `${plan.name} plan for security needs` %>
+                                <% } %>
+                            </p>
+                            <ul class="features">
+                                <% features.forEach(feature => { %>
+                                    <li><%= feature %></li>
+                                <% }); %>
+                            </ul>
+                            <button class="plan-card-btn" <%= isCurrent ? 'disabled' : '' %> data-plan="<%= plan.name %>">
+                                <%= isCurrent ? 'Current Plan' : 'Choose' %>
+                            </button>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <div class="loading-message">No plans available at the moment.</div>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Account Settings Section -->
+        <div class="plan-details">
+            <h2>Account Settings</h2>
+            <form id="account-settings-form" class="account-settings-form" action="/api/users/<%= user.id %>" method="PUT">
+                <div class="form-group">
+                    <label for="edit-name">Full Name</label>
+                    <input type="text" id="edit-name" name="name" required class="form-input" value="<%= user.name %>">
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email</label>
+                    <input type="email" id="edit-email" name="email" required class="form-input" value="<%= user.email %>">
+                </div>
+                <div class="form-group">
+                    <label for="edit-password">New Password (leave blank to keep current)</label>
+                    <input type="password" id="edit-password" name="password" class="form-input">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="edit-btn">Save Changes</button>
+                    <button type="button" id="delete-account-btn" class="renewal-btn">Delete Account</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>📍 SalahElDin, Riyadh, Saudi Arabia</p>
+                <p>📞 +966 590437680</p>
+                <p>📧 contact@CyberSubRoom.com</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <a href="/">Home</a>
+                <a href="/plans">Plans</a>
+                <a href="/feedback">Feedback</a>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com">
+                        <img class="icon" src="/assests/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com">
+                        <img class="icon" src="/assests/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com">
+                        <img class="icon" src="/assests/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://linkedin.com">
+                        <img class="icon" src="/assests/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <%= new Date().getFullYear() %> CyberSubRoom. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html> 

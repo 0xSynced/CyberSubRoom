@@ -652,3 +652,99 @@ table th {
         padding: 0 20px;
     }
 }
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    background-color: #2a2a2c;
+    margin: 5% auto;
+    padding: 30px;
+    border: 2px solid #FFB22C;
+    border-radius: 20px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close {
+    color: #FFB22C;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    background: transparent;
+}
+
+.close:hover {
+    color: #F7F7F7;
+}
+
+.modal h2 {
+    color: #FFB22C;
+    margin-bottom: 20px;
+    background: transparent;
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+    background: transparent;
+}
+
+.modal label {
+    display: block;
+    margin-bottom: 8px;
+    color: #F7F7F7;
+    background: transparent;
+}
+
+.modal .form-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #FFB22C;
+    border-radius: 5px;
+    background-color: #222224;
+    color: #F7F7F7;
+}
+
+.modal .form-input:focus {
+    outline: none;
+    border-color: #F7F7F7;
+}
+
+.modal .price-warning {
+    color: #FFB22C;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+    background: transparent;
+}
+
+.modal .form-actions {
+    margin-top: 20px;
+    text-align: right;
+    background: transparent;
+}
+
+.modal .edit-btn {
+    background-color: #FFB22C;
+    color: #222224;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.modal .edit-btn:hover {
+    background-color: #F7F7F7;
+}
